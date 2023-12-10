@@ -20,9 +20,9 @@ for line in input:
         for j in indv_set:
             num = 0
             k = 1
-            for k in range(1, len(j)):
+            for k in range(0, len(j)):
                 if j[k].isdigit():
-                    num = num + int(j[k]) * (10*k)
+                    num = int(str(num) + j[k])
                 else:
                     break
             if j[k] == "r":
@@ -30,16 +30,13 @@ for line in input:
                     is_counted = False
                     break
             elif j[k] == "g":
-                if num < GREEN_LIMIT or num > BLUE_LIMIT:
+                if num > GREEN_LIMIT:
                     is_counted = False
                     break
             elif j[k] == "b":
-                if num < BLUE_LIMIT:
+                if num > BLUE_LIMIT:
                     is_counted = False
                     break
-        if is_counted:
-            game_id_sum = game_id_sum + int(line[6:ind_colon])
+    if is_counted:
+        game_id_sum = game_id_sum + int(line[5:ind_colon])
 print (game_id_sum)
-                    
-
-    
